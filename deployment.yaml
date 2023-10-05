@@ -1,0 +1,17 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: ss-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ss-app
+  template:
+    metadata:
+      labels:
+        app: ss-app
+    spec:
+      containers:
+        - name: ssi-container
+          image: gurlivleenkainth2000/sporty-shoes:latest

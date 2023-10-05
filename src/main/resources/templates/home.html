@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-3">
+
+	<nav class="navbar navbar-expand-sm navbar-light bg-light">
+	  <div class="container-fluid">
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="mynavbar">
+	      <ul class="navbar-nav me-auto">
+	        <li class="nav-item">
+	          <a class="nav-link" href="/cart">Cart</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/orders">Orders</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/profile">Profile</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/logout">Logout</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+</div>
+
+<div class="container mt-3">
+  <div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>Sporty Shoes</h1>
+    <p>Powered By Simplilearn</p> 
+    <p>Step Up Your Game with Sporty Shoes: Where Every Click is a Stride Towards Style!</p>
+    <p th:text=" 'Hello ' + ${user.name} + ' !' " />
+    <p th:text=" 'Your Email: ' + ${user.email} + ' !' " />
+  </div>
+</div>
+  
+  <div class="container mt-3">
+  	<img th:src="@{banner1.png}" alt="Banner Image" width="100%" height="340px">
+  </div>
+  
+  <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" th:each="shoe : ${shoes}">
+                <div class="card">
+                    <img th:src="@{${shoe.image}}" class="card-img-top" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${shoe.name}"/>
+                        <p class="card-text" th:text="'INR ' + ${shoe.price}"/>
+                        <b><p class="card-text" th:text="${shoe.category}"/></b>
+                        <p class="card-text" th:text="${shoe.sizes}"/>
+                        <a th:href="@{view-shoe?id={id}(id=${shoe.id})}" th:id="'shoe' + ${shoe.id}" class="btn btn-primary">View Shoe</a>
+                        <a th:href="@{add-to-cart?id={id}(id=${shoe.id})}" th:id="'cart' + ${shoe.id}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
