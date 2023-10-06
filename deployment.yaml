@@ -15,3 +15,8 @@ spec:
       containers:
         - name: ssi-container
           image: gurlivleenkainth2000/sporty-shoes:latest
+          ports:
+            - name: http
+              containerPort: 9010
+      imagePullSecrets:
+        - name: ss-app-secret
