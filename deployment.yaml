@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ssapp-deployment
@@ -18,5 +18,3 @@ spec:
           ports:
             - name: http
               containerPort: 9010
-      imagePullSecrets:
-        - name: ss-app-secret
